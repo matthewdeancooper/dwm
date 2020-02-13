@@ -66,13 +66,14 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *termcmd[]  = { "st", NULL };
+/* static const char *termcmd[]  = { "st", "-e", "tmux",  NULL }; */
+static const char *termcmd[]  = { "st",  NULL };
 static const char *edcmd[]  = { "emacsclient", "-c", NULL };
 static const char *browcmd[]  = { "chromium", NULL  };
 /* static const char *browcmd[]  = { "firefox", NULL  }; */
-static const char *upvol[]  = { "pactl", "--", "set-sink-volume", "0", "+10%", NULL };
-static const char *downvol[]  = { "pactl", "--", "set-sink-volume", "0", "-10%", NULL };
-static const char *mutevol[]  = { "pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char *upvol[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
+static const char *downvol[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
+static const char *mutevol[]  = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
 static const char *upbright[]  = { "lux", "-a", "5%", NULL  };
 static const char *downbright[]  = { "lux", "-s", "5%", NULL  };
 static const char *xrand[]  = { "mydualscreen",  NULL  };
@@ -91,22 +92,22 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_o, spawn,          {.v = edcmd } },
 	{ MODKEY|ShiftMask,             XK_i, spawn,          {.v = browcmd } },
-	{ 0,                       XK_F10,      spawn,          {.v = dmenucmd } },
-	{ 0,                       XK_Home,      spawn,          {.v = calmenu } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_c,      spawn,          {.v = calmenu } },
 	/* { 0,                       XK_F12,      spawn,          {.v = skippy } }, */
-	{ 0,                       XK_Insert, spawn,          {.v = clip } },
-	{ 0,                       XK_End, spawn,             {.v = slock } },
-	{ 0,                       XK_F8,      spawn,          {.v = dnm } },
-	{ 0,                       XK_F9,     spawn,          {.v = pass } },
+	{ MODKEY,                       XK_c, spawn,          {.v = clip } },
+	{ MODKEY,                       XK_BackSpace, spawn,             {.v = slock } },
+	{ MODKEY,                       XK_n,      spawn,          {.v = dnm } },
+	{ MODKEY,                       XK_F9,     spawn,          {.v = pass } },
 	/* { MODKEY,                       XK_Home,   togglebar,      {0} }, */
-	{ MODKEY,	         		         	XK_Delete, spawn,          {.v = pkill } },
+	{ MODKEY,	                 	XK_Delete, spawn,          {.v = pkill } },
 	{ MODKEY|ShiftMask,             XK_Delete, quit,           {0} },
-	{ 0,                       XK_F1,     spawn,          {.v = mutevol } },
-	{ 0,                       XK_F2,     spawn,          {.v = downvol } },
-	{ 0,                       XK_F3,     spawn,          {.v = upvol } },
-	{ 0,                       XK_F5,     spawn,          {.v = downbright } },
-	{ 0,                       XK_F6,     spawn,          {.v = upbright } },
-	{ 0,                       XK_F11,    spawn,          {.v = xrand } },
+	{ MODKEY,                       XK_m,     spawn,          {.v = mutevol } },
+	{ MODKEY,                       XK_v,     spawn,          {.v = downvol } },
+	{ MODKEY|ShiftMask,             XK_v,     spawn,          {.v = upvol } },
+	{ MODKEY,                       XK_b,     spawn,          {.v = downbright } },
+	{ MODKEY|ShiftMask,             XK_b,     spawn,          {.v = upbright } },
+	{ MODKEY,                       XK_F11,    spawn,          {.v = xrand } },
 	/* { MODKEY,                       XK_F8,     spawn,          {.v = netreboot} }, */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -150,8 +151,8 @@ static Key keys[] = {
 /* click can be ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+                           { ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+                           { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
