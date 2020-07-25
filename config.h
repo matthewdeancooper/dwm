@@ -84,6 +84,7 @@ static const char *netreboot[]  = { "netreboot", NULL  };
 static const char *pass[]  = { "passmenu", NULL  };
 static const char *calmenu[]  = { "calmenu", NULL  };
 static const char *slock[]  = { "slock", NULL  };
+static const char *dwbuff[]  = { "dwbuff", NULL  };
 /* static const char *skippy[]  = { "skippy-xd", "--activate-window-picker", NULL  }; */
 
 static Key keys[] = {
@@ -94,29 +95,30 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_i, spawn,          {.v = browcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = calmenu } },
+	{ MODKEY,                       XK_b,      spawn,          {.v = dwbuff } },
 	/* { 0,                       XK_F12,      spawn,          {.v = skippy } }, */
-	{ MODKEY,                       XK_c, spawn,          {.v = clip } },
+	{ MODKEY,                       XK_Insert, spawn,          {.v = clip } },
 	{ MODKEY,                       XK_BackSpace, spawn,             {.v = slock } },
-	{ MODKEY,                       XK_n,      spawn,          {.v = dnm } },
-	{ MODKEY,                       XK_F9,     spawn,          {.v = pass } },
+	{ MODKEY,                       XK_F8,      spawn,          {.v = dnm } },
+	/* { MODKEY,                       XK_F9,     spawn,          {.v = pass } }, */
 	/* { MODKEY,                       XK_Home,   togglebar,      {0} }, */
 	{ MODKEY,	                 	XK_Delete, spawn,          {.v = pkill } },
 	{ MODKEY|ShiftMask,             XK_Delete, quit,           {0} },
-	{ MODKEY,                       XK_m,     spawn,          {.v = mutevol } },
-	{ MODKEY,                       XK_v,     spawn,          {.v = downvol } },
-	{ MODKEY|ShiftMask,             XK_v,     spawn,          {.v = upvol } },
-	{ MODKEY,                       XK_b,     spawn,          {.v = downbright } },
-	{ MODKEY|ShiftMask,             XK_b,     spawn,          {.v = upbright } },
+	{ MODKEY,                       XK_F1,     spawn,          {.v = mutevol } },
+	{ MODKEY,                       XK_F2,     spawn,          {.v = downvol } },
+	{ MODKEY,			             XK_F3,     spawn,          {.v = upvol } },
+	{ MODKEY,                       XK_F5,     spawn,          {.v = downbright } },
+	{ MODKEY,          			   XK_F6,     spawn,          {.v = upbright } },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = xrand } },
 	/* { MODKEY,                       XK_F8,     spawn,          {.v = netreboot} }, */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_h,      focusstack,     {.i = -1 } },
-	/*{ MODKEY,                     XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },*/
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
+	/*{ MODKEY,                     XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },*/
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
