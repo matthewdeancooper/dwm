@@ -68,7 +68,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 /* static const char *termcmd[]  = { "st", "-e", "tmux",  NULL }; */
 static const char *termcmd[]  = { "st",  NULL };
-/* static const char *edcmd[]  = { "emacsclient", "-c", NULL }; */
+static const char *edcmd[]  = { "emacsclient", "-c", NULL };
 static const char *browcmd[]  = { "firefox", NULL  };
 /* static const char *browcmd[]  = { "firefox", NULL  }; */
 static const char *upvol[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
@@ -91,7 +91,7 @@ static Key keys[] = {
 
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	/* { MODKEY|ShiftMask,             XK_o, spawn,          {.v = edcmd } }, */
+	{ MODKEY|ShiftMask,             XK_o, spawn,          {.v = edcmd } },
 	{ MODKEY|ShiftMask,             XK_i, spawn,          {.v = browcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	/* { MODKEY,                       XK_c,      spawn,          {.v = calmenu } }, */
@@ -122,8 +122,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[3]} },
 	/* { MODKEY,                       XK_space,  setlayout,      {0} }, */
