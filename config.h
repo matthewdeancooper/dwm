@@ -67,10 +67,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 /* static const char *termcmd[]  = { "st", "-e", "tmux",  NULL }; */
-static const char *termcmd[]  = { "st",  NULL };
+static const char *termcmd[]  = { "gnome-terminal",  NULL };
 static const char *edcmd[]  = { "emacsclient", "-c", NULL };
 static const char *browcmd[]  = { "firefox", NULL  };
-/* static const char *browcmd[]  = { "firefox", NULL  }; */
 static const char *upvol[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *downvol[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 static const char *mutevol[]  = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
@@ -85,7 +84,8 @@ static const char *pass[]  = { "passmenu", NULL  };
 /* static const char *calmenu[]  = { "calmenu", NULL  }; */
 /* static const char *slock[]  = { "slock", NULL  }; */
 static const char *dwbuff[]  = { "dwbuff", NULL  };
-static const char *skippy[]  = { "skippy-xd", "--activate-window-picker", NULL  };
+/* static const char *skippy[]  = { "skippy-xd", "--activate-window-picker", NULL  }; */
+static const char *skippy[]  = { "skippy-xd", NULL  };
 
 static Key keys[] = {
 
