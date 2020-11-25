@@ -43,10 +43,10 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-                                 { "[t]",      tile },  
-                                 { "[d]",      deck },   
+                                 { "[t]",      tile },
+                                 { "[d]",      deck },
                                  { "[m]",      monocle },
-                                 { "[f]",      NULL },   
+                                 { "[f]",      NULL },
 };
 
 /* key definitions */
@@ -86,6 +86,7 @@ static const char *pass[]  = { "passmenu", NULL  };
 static const char *dwbuff[]  = { "dwbuff", NULL  };
 /* static const char *skippy[]  = { "skippy-xd", "--activate-window-picker", NULL  }; */
 static const char *skippy[]  = { "skippy-xd", NULL  };
+static const char *scrotyank[]  = { "scrotyank", NULL  };
 
 static Key keys[] = {
 
@@ -94,6 +95,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_o, spawn,          {.v = edcmd } },
 	{ MODKEY|ShiftMask,             XK_i, spawn,          {.v = browcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = scrotyank} },
 	/* { MODKEY,                       XK_c,      spawn,          {.v = calmenu } }, */
 	{ MODKEY,                       XK_b,      spawn,          {.v = dwbuff } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = skippy } },
