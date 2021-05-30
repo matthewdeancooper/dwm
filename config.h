@@ -13,13 +13,15 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]     	= "#005577";
 static const char my_border[]     	= "#6897BB";
 static const char my_border2[]     	= "#1874CD";
-static const char my_background[]     	= "#000000";
+static const char my_border3[]     	= "#2aa198";
+static const char my_border4[]     	= "#268bd2";
+static const char my_background[]  	= "#000000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
  	/* [SchemeNorm] = { col_gray3, col_gray1, col_gray2 }, */
  	[SchemeNorm] = { col_gray3, col_gray1, my_background },
  	/* [SchemeSel] =  { col_gray4, col_cyan,  col_cyan}, */
- 	[SchemeSel] =  { col_gray4, my_background,  my_border2},
+ 	[SchemeSel] =  { col_gray4, my_background,  my_border4},
 };
 
 /* tagging */
@@ -66,21 +68,23 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
-/* static const char *termcmd[]  = { "st", "-e", "tmux",  NULL }; */
-static const char *termcmd[]  = { "gnome-terminal",  NULL };
-static const char *edcmd[]  = { "emacsclient", "-c", NULL };
-static const char *browcmd[]  = { "firefox", NULL  };
+/* static const char *termcmd[]  = { "alacritty", "-e", "tmux",  NULL }; */
+static const char *termcmd[]  = { "alacritty",  NULL };
+/* static const char *termcmd[]  = { "st",  NULL }; */
+/* static const char *termcmd[]  = { "gnome-terminal",  NULL }; */
+/* static const char *edcmd[]  = { "emacsclient", "-c", NULL }; */
+static const char *browcmd[]  = { "brave-browser", NULL  };
 static const char *upvol[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *downvol[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 static const char *mutevol[]  = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
-static const char *upbright[]  = { "lux", "-a", "5%", NULL  };
-static const char *downbright[]  = { "lux", "-s", "5%", NULL  };
+/* static const char *upbright[]  = { "lux", "-a", "5%", NULL  }; */
+/* static const char *downbright[]  = { "lux", "-s", "5%", NULL  }; */
 /* static const char *xrand[]  = { "mydualscreen",  NULL  }; */
 static const char *dnm[]  = { "networkmanager_dmenu", NULL  };
 static const char *clip[]  = { "clipmenu", NULL  };
 static const char *pkill[]  = { "dkillx", NULL  };
 /* static const char *netreboot[]  = { "netreboot", NULL  }; */
-static const char *pass[]  = { "passmenu", NULL  };
+/* static const char *pass[]  = { "passmenu", NULL  }; */
 /* static const char *calmenu[]  = { "calmenu", NULL  }; */
 /* static const char *slock[]  = { "slock", NULL  }; */
 static const char *dwbuff[]  = { "dwbuff", NULL  };
@@ -92,7 +96,7 @@ static Key keys[] = {
 
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_o, spawn,          {.v = edcmd } },
+	/* { MODKEY|ShiftMask,             XK_o, spawn,          {.v = edcmd } }, */
 	{ MODKEY|ShiftMask,             XK_i, spawn,          {.v = browcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = scrotyank} },
@@ -105,12 +109,12 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_F9,     spawn,          {.v = pass } }, */
 	/* { MODKEY,                       XK_Home,   togglebar,      {0} }, */
 	/* { MODKEY,	                 	XK_Delete, spawn,          {.v = pkill } }, */
-	/* { MODKEY|ShiftMask,             XK_Delete, quit,           {0} }, */
+	{ MODKEY|ShiftMask,             XK_Delete, quit,           {0} },
 	{ MODKEY,                       XK_0,     spawn,          {.v = mutevol } },
 	{ MODKEY,                       XK_minus,     spawn,          {.v = downvol } },
 	{ MODKEY,			             XK_equal,     spawn,          {.v = upvol } },
-	{ MODKEY,                       XK_F5,     spawn,          {.v = downbright } },
-	{ MODKEY,          			   XK_F6,     spawn,          {.v = upbright } },
+	/* { MODKEY,                       XK_F5,     spawn,          {.v = downbright } }, */
+	/* { MODKEY,          			   XK_F6,     spawn,          {.v = upbright } }, */
 	/* { MODKEY,                       XK_F11,    spawn,          {.v = xrand } }, */
 	/* { MODKEY,                       XK_F8,     spawn,          {.v = netreboot} }, */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
